@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import News from "../data/news.json"
 import NewsSlider from "../components/Swiper"
 import CardSlider from "../components/CardSlider"
+import Navbar from "../components/Navbar"
 
 export default function Home() {
   const [source, setSource] = useState("Atabay");
@@ -15,7 +16,7 @@ export default function Home() {
       setLoading(true)
       try {
       //   const res = await fetch(
-      //     `https://api.mediastack.com/v1/news?access_key=2830121c27a39eb6497d9a20ee46ccdf&countries=tr&categories=health`
+      //     `https://api.mediastack.com/v1/news?access_key=2830121c27a39eb6497d9a20ee46ccdf&offset=0&limit=20`
       //   );
 
       //   if (!res.ok) {
@@ -24,7 +25,7 @@ export default function Home() {
 
       //   const data = await res.json();
       //   console.log(data.data,"data");
-        //setNews(data.data);
+      //   setNews(data.data);
         setNews(News);
       } catch (error) {
         setError(error.message);
@@ -43,7 +44,7 @@ export default function Home() {
   }, [source]);
 
   return (
-    <div>
+    <div className="indexPage">
       
 
       {/* {loading ? <p>Loading...</p> : error ? <p>{error}</p> : (
@@ -59,6 +60,7 @@ export default function Home() {
       </select>  
       <NewsSlider newsData={News.data} />*/}
       <h1>News from {source}</h1>
+      <Navbar />
       <CardSlider newsData={News.data} />
     </div>
   );
