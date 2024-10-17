@@ -1,11 +1,19 @@
 $primary-color: #0070f3;
 $card-border-radius: 12px;
-.indexPage{
-  padding:2rem
+
+.outerIndex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.indexPage {
+  padding: 2rem;
+  width: 75%;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f9f9f9;
   color: #333;
   margin: 0;
@@ -13,77 +21,38 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2 {
-  font-family: 'Georgia', serif;
+h1,
+h2 {
+  font-family: "Georgia", serif;
   color: #333;
 }
 
 p {
   line-height: 1.6;
 }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navItem {
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.selectedValues {
+  margin-top: 20px;
+}
 
 .whole-page {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  row-gap: 2.5rem;
+  justify-items: center;
   padding: 0px;
   animation: fadeInPage 1s ease-in-out;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: $card-border-radius;
+  background-color: #e5e5;
   border: 2px solid red;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
-    .card-image img {
-      transform: scale(1.1); // Hover sırasında resimde hafif zoom
-    }
-  }
-}
-
-.card-image {
-  height: 200px;
-  overflow: hidden;
-  border-bottom: 1px solid #eaeaea;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-    border-radius: $card-border-radius 0 0 0;
-  }
-}
-
-.card-title {
-  padding: 15px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  background-color: #666;
-  color: #333;
-  text-align: start;
-   h2:hover{
-text-decoration: underline;
-   }
-}
-
-.card-description {
-  padding: 10px 15px;
-  font-size: 1rem;
-  color: #666;
-  text-align: justify;
-  flex-grow: 1;
 }
 
 @keyframes fadeInPage {
@@ -101,24 +70,176 @@ text-decoration: underline;
   .card {
     width: 100%;
   }
+}
 
-  .whole-page {
+.A {
+  position: relative;
+  width: 30%;
+  min-width: 150px;
+  margin: 0.5rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  min-height: 350px;
+  border: 1px solid #333;
+  overflow: hidden;
+  background-color: white;
+  &:hover {
+    overflow-y: auto;
+  }
+
+  scrollbar-width: 0;
+  border-radius: 13px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.585);
+
+  h3 {
+    padding: 1rem;
+
+    color: black;
+    margin: 0;
+    transform: rotateX(0);
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    //transform: translateY(50%);
+  }
+
+  &:hover .C {
+    transform: rotateX(0); /* Hover sırasında animasyon tetiklenecek */
+    opacity: 1;
+  }
+  &:hover .B {
+    transform: rotateX(90);
+    opacity: 0.7;
+  }
+
+  .B,
+  .C {
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+
+  .B {
+    background-color: #f8f9fa;
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    font-size: 1.5rem;
+
+    img {
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-height: 350px;
+      border-radius: 5px;
+      border: 2px solid red;
+    }
+  }
+
+  .C {
+    background-color: #e9ecefc2;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    height: 100%;
+    transform: rotateX(90deg);
+    opacity: 0;
+    z-index: 2;
+    padding-inline: 1rem;
+    position: absolute;
+    top: 0;
+    p {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: x-large;
+      padding: 3rem;
+    }
+  }
+
+  .D {
+    background-color: white;
+
+    h3 {
+      color: #5c5c5c;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-weight: 400;
+    }
   }
 }
 
-.navbar {
-  display: flex ;
-  justify-content: space-between;
-  background-color: #f5f5f5;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
-}
-.navItem {
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-.selectedValues {
-  margin-top: 20px;
+.countries {
+  display: flex;
+  flex-direction: row;
+  background-color: #ddd;
+
+  input[type="radio"] {
+    display: none; /* Radio button'u görünmez yapar */
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 2px solid #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Yumuşak geçiş için */
+    user-select: none;
+    color: #000;
+    background-color: white;
+  }
+
+  input[id="option1"]:checked + label {
+    color: rgb(0, 213, 255);
+    background-color: white;
+  }
+  input[id="option1"]:hover + label {
+    background-color: rgb(0, 213, 255);
+    color: white;
+  }
+
+  input[id="option2"]:checked + label {
+    color: rgb(23, 61, 132);
+    background-color: white;
+  }
+  input[id="option2"]:hover + label {
+    background-color: rgb(23, 61, 132);
+    color: white;
+  }
+
+  input[id="option3"]:checked + label {
+    color: rgb(225, 194, 41);
+    background-color: white;
+  }
+  input[id="option3"]:hover + label {
+    background-color: rgb(243, 210, 45);
+    color: white;
+  }
+
+  input[id="option4"]:checked + label {
+    color: red;
+    background-color: white;
+  }
+  input[id="option4"]:hover + label {
+    background-color: red;
+    color: white;
+  }
+
+  input[id="option5"]:checked + label {
+    color: red;
+    background-color: white;
+  }
+  input[id="option5"]:hover + label {
+    background-color: red;
+    color: white;
+  }
+  input[id="option6"]:checked + label {
+    color: rgb(7, 94, 10);
+    background-color: white;
+  }
+  input[id="option6"]:hover + label {
+    background-color: rgb(7, 94, 10);
+    color: white;
+  }
 }
