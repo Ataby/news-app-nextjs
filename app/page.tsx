@@ -1,11 +1,14 @@
 "use client";
 
 import Index from "./pages/index";
+import { MyProvider } from "./context/FilterContext";
 
 export default function Home() {
   return (
-    <div >
+    <MyProvider>
+      
       <Index/>
-    </div>
+    
+    </MyProvider>
   );
 }
