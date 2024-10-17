@@ -1,76 +1,47 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MyContext } from "../context/FilterContext";
 
 const Navbar = () => {
   // State'ler
-  const [countries, setCountries] = useState("");
-  const [category, setCategory] = useState("");
-  const [languages, setLanguages] = useState("");
+
+  const { setFromWhere, setCategoryy, setLanguage } = useContext(MyContext);
 
   // Radio button için onChange event handler'ları
   const handleCountryChange = (event) => {
-    setCountries(event.target.value);
+    setFromWhere(event.target.value);
   };
 
   const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
+    setCategoryy(event.target.value);
   };
 
   const handleLanguageChange = (event) => {
-    setLanguages(event.target.value);
+    setLanguage(event.target.value);
   };
 
   return (
     <nav className="navbar">
-      <div className="navItem">
-        <h3>Countries</h3>
-        <label>
-          <input
-            type="radio"
-            name="countries"
-            value="us"
-            onChange={handleCountryChange}
-          />
-          USA
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="countries"
-            value="de"
-            onChange={handleCountryChange}
-          />
-          Germany
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="countries"
-            value="tr"
-            onChange={handleCountryChange}
-          />
-          Turkey
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="countries"
-            value="cn"
-            onChange={handleCountryChange}
-          />
-          China
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="countries"
-            value="sa"
-            onChange={handleCountryChange}
-          />
-          Saudi Arabia
-        </label>
+      <div class="countries">
+        <input type="radio" id="option1" name="menu" />
+        <label for="option1">WORLD</label>
+
+        <input type="radio" id="option4" name="menu" />
+        <label for="option4">TURKEY</label>
+        <input type="radio" id="option2" name="menu" />
+        <label for="option2">USA</label>
+
+        <input type="radio" id="option3" name="menu" />
+        <label for="option3">GERMANY</label>
+
+
+        <input type="radio" id="option5" name="menu" />
+        <label for="option5">CHINA</label>
+
+        <input type="radio" id="option6" name="menu" />
+        <label for="option6">SAUDI ARABIA</label>
       </div>
 
-      <div className="navItem">
+      <div className="navItem categories">
         <h3>Category</h3>
         <label>
           <input
@@ -101,7 +72,7 @@ const Navbar = () => {
         </label>
       </div>
 
-      <div className="navItem">
+      <div className="navItem languages">
         <h3>Languages</h3>
         <label>
           <input
@@ -119,7 +90,7 @@ const Navbar = () => {
             value="ar"
             onChange={handleLanguageChange}
           />
-          Arabic
+          عربي
         </label>
         <label>
           <input
@@ -128,7 +99,7 @@ const Navbar = () => {
             value="es"
             onChange={handleLanguageChange}
           />
-          Spanish
+          Español
         </label>
         <label>
           <input
@@ -137,20 +108,11 @@ const Navbar = () => {
             value="zh"
             onChange={handleLanguageChange}
           />
-          Chinese
+          中国人
         </label>
-      </div>
-
-      {/* Seçilen Değerler */}
-      <div className="selectedValues">
-        <p>Selected Country: {countries}</p>
-        <p>Selected Category: {category}</p>
-        <p>Selected Language: {languages}</p>
       </div>
     </nav>
   );
 };
-
- 
 
 export default Navbar;

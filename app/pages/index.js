@@ -3,13 +3,15 @@ import News from "../data/news.json"
 import NewsSlider from "../components/Swiper"
 import CardSlider from "../components/CardSlider"
 import Navbar from "../components/Navbar"
+import CardSlidersss from "../components/CardSlidersss"
 
 export default function Home() {
-  const [source, setSource] = useState("Atabay");
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [category, setCategory] = useState("general");
+
+      const [news, setNews] = useState([]);
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState(null);
+
+  
 
   useEffect(() => {
     const getNews = async () => {
@@ -41,9 +43,12 @@ export default function Home() {
     }, 900000); // Her 15 dakika yeni haberleri kontrol et
 
     return () => clearInterval(interval);
-  }, [source]);
+  }, []);
 
   return (
+      <div className="outerIndex">
+
+      
     <div className="indexPage">
       
 
@@ -59,9 +64,11 @@ export default function Home() {
         <option value="cnn">CNN</option>
       </select>  
       <NewsSlider newsData={News.data} />*/}
-      <h1>News from {source}</h1>
+      <h1>News from {}</h1>
       <Navbar />
-      <CardSlider newsData={News.data} />
+      {/* <CardSlider newsData={News.data} /> */}
+      <CardSlidersss newsData={News.data}/> 
+    </div>
     </div>
   );
 }
