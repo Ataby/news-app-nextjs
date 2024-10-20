@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-     "export": "next export"
+    "export": "next export"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.2",
@@ -15,11 +15,15 @@
     "@capacitor/core": "^6.1.2",
     "@capacitor/ios": "^6.1.2",
     "@capacitor/push-notifications": "^6.0.2",
+    "axios": "^1.7.7",
+    "chart.js": "^4.4.5",
     "next": "^14.2.15",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "sass": "^1.79.5",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -4,9 +4,9 @@ import { createContext, useState } from 'react';
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
-  const [fromWhere, setFromWhere] = useState(null);
+  const [fromWhere, setFromWhere] = useState("");
   const [category, setCategoryy] = useState("general");
-  const [language, setLanguage] = useState("en")
+  const [language, setLanguage] = useState("")
 
 
   return (
