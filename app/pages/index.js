@@ -20,14 +20,13 @@ export default function Home() {
     setLanguage,
   } = useContext(MyContext);
   const [news, setNews] = useState([]);
-  const [filteredNews, setFilteredNews] = useState([])
-  const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  const [filteredNews, setFilteredNews] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBox, setSelectedBox] = useState(null);
 
   const { data, error, isLoading } = useSWR("news-api", fetcher, {
     onSuccess: (data) => {
-      //window.alert("Yeni haber var!");  Trigger alert or other logic when new data is fetched
-      // You can call any function or method here
+      window.alert("Yeni haber var!");
     },
     onError: (error) => {
       console.error("An error occurred while fetching data:", error);
@@ -37,6 +36,16 @@ export default function Home() {
     },
   });
 
+  const openModal = (box) => {
+    setSelectedBox(box);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedBox(null);
+  };
+
   useEffect(() => {
     if (data?.data) setNews(data.data);
   }, [data?.data]);
@@ -45,18 +54,18 @@ export default function Home() {
     let filtered = News.data;
 
     if (language) {
-      filtered = filtered.filter((item) => item.language ===  language);
+      filtered = filtered?.filter((item) => item.language === language);
     }
 
     if (category) {
-      filtered = filtered.filter((item) => item.category === category);
+      filtered = filtered?.filter((item) => item.category === category);
     }
 
     if (fromWhere) {
-      filtered = filtered.filter((item) => item.country === fromWhere);
+      filtered = filtered?.filter((item) => item.country === fromWhere);
     }
     setFilteredNews(filtered);
-  }, [language,category,fromWhere]);
+  }, [language, category, fromWhere]);
 
   return (
     <div className="outerIndex">
@@ -65,7 +74,11 @@ export default function Home() {
 
       <div className="indexPage">
         <div className="main-news">
-          <MainNews data={filteredNews[0]} />
+          {filteredNews && filteredNews.length > 0 ? (
+            <MainNews data={filteredNews[0]}  />
+          ) : (
+            <p>Bulunamadı.</p>
+          )}
           <div className="charts">
             <DateChart data={filteredNews} />
             <CountryChart data={filteredNews} />
@@ -73,7 +86,12 @@ export default function Home() {
         </div>
 
         {/* <CardSlidersss newsData={news} /> */}
-        <CardSlidersss newsData={filteredNews.slice(1)} />
+        {filteredNews && filteredNews.length > 0 ? (
+            <CardSlidersss newsData={filteredNews.slice(1)} />
+          ) : (
+            <p>Bulunamadı.</p>
+          )}
+         
       </div>
     </div>
   );

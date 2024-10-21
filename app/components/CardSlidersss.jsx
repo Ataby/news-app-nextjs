@@ -1,14 +1,27 @@
-import React from "react";
-import Dot from "../icons/dot.svg";
+import React, { useContext } from 'react'
+import { MyContext } from '../context/FilterContext'
+import Modal from "./Modal"
+
 
 const CardSlidersss = ({ newsData }) => {
+  const {isModalOpen,selectedBox,setIsModalOpen,setSelectedBox}=useContext(MyContext);
+  const openModal = (box) => {
+    setSelectedBox(box);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedBox(null);
+  };
+
   return (
     <div className="whole-page">
       <div className="latest">
         <h3>Latest News</h3>
       </div>
       {newsData.map((article, index) => (
-        <div className="A" key={index}>
+        <div className="A" key={index} onClick={()=> openModal(article)} >
           <div className="B">
             {article.image && <img src={article.image} alt={article.title} />}
 
@@ -24,6 +37,9 @@ const CardSlidersss = ({ newsData }) => {
           </div>
         </div>
       ))}
+      {isModalOpen && (
+        <Modal box={selectedBox} closeModal={closeModal} />
+      )}
     </div>
   );
 };

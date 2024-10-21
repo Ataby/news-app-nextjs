@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const HOST_API = `https://api.mediastack.com/v1/news?access_key=${process.env.NEXT_PUBLIC_ACCESS_KEY}`;
+export const HOST_API = `https://api.mediastack.com/v1/news?access_key=${process.env.NEXT_PUBLIC_ACCESS_KY}`;
 
 const axiosInstance = axios.create({ baseURL: HOST_API });
 
@@ -17,7 +17,7 @@ export default axiosInstance;
 
 export const fetcher = async () => {
   const res = await axios.get(
-    `https://api.mediastack.com/v1/news?access_key=${process.env.NEXT_PUBLIC_ACCESS_KEY}`
+    `https://api.mediastack.com/v1/news?access_key=${process.env.NEXT_PUBLIC_ACCESS_KY}`
   );
   return res.data;
 };
