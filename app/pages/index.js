@@ -51,7 +51,7 @@ export default function Home() {
   }, [data?.data]);
 
   useEffect(() => {
-    let filtered = News.data;
+    let filtered = news;
 
     if (language) {
       filtered = filtered?.filter((item) => item.language === language);
