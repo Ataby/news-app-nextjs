@@ -13,19 +13,12 @@ import MainNews from "../components/MainNews";
 export default function Home() {
   const {
     fromWhere,
-    setFromWhere,
     category,
-    setCategoryy,
     language,
-    setLanguage,
   } = useContext(MyContext);
   const [news, setNews] = useState([]);
   const [filteredNews, setFilteredNews] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedBox, setSelectedBox] = useState(null);
-
   const isFirstRender = useRef(true);
-
 
   const { data, error, isLoading } = useSWR("news-api", fetcher, {
     onSuccess: (data) => {
@@ -42,16 +35,6 @@ export default function Home() {
       return <div>loading...</div>;
     },
   });
-
-  const openModal = (box) => {
-    setSelectedBox(box);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedBox(null);
-  };
 
   useEffect(() => {
     if (data?.data) setNews(data.data);
