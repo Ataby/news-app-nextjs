@@ -259,11 +259,67 @@ p {
 }
 
 .navItem{
-  input:checked + label {
+  input[id="health"]:checked + label {
     color: #000;
     background-color: white;
   }
-  input:hover + label {
+  input[id="health"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="science"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="science"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="technology"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="technology"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="general"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="general"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="english"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="english"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="deutsch"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="deutsch"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="espanol"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="espanol"]:hover + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="chinese"]:checked + label {
+    color: #000;
+    background-color: white;
+  }
+  input[id="chinese"]:hover + label {
     color: #000;
     background-color: white;
   }
