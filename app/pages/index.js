@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { MyContext } from "../context/FilterContext";
 import News from "../data/news.json";
 import Header from "../components/Header";
@@ -24,8 +24,15 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBox, setSelectedBox] = useState(null);
 
+  const isFirstRender = useRef(true);
+
+
   const { data, error, isLoading } = useSWR("news-api", fetcher, {
     onSuccess: (data) => {
+      if(isFirstRender.current){
+        isFirstRender.current = false;
+        return;
+      }
       window.alert("Yeni haber var!");
     },
     onError: (error) => {
@@ -67,6 +74,10 @@ export default function Home() {
     setFilteredNews(filtered);
   }, [language, category, fromWhere]);
 
+  useEffect(() => {
+    setFilteredNews(news);
+  }, [news]);
+
   return (
     <div className="outerIndex">
       <Header />
@@ -75,7 +86,7 @@ export default function Home() {
       <div className="indexPage">
         <div className="main-news">
           {filteredNews && filteredNews.length > 0 ? (
-            <MainNews data={filteredNews[0]}  />
+            <MainNews data={filteredNews[0]} />
           ) : (
             <p>Bulunamadı.</p>
           )}
@@ -86,12 +97,7 @@ export default function Home() {
         </div>
 
         {/* <CardSlidersss newsData={news} /> */}
-        {filteredNews && filteredNews.length > 0 ? (
-            <CardSlidersss newsData={filteredNews.slice(1)} />
-          ) : (
-            <p>Bulunamadı.</p>
-          )}
-         
+        <CardSlidersss newsData={filteredNews.slice(1)} />
       </div>
     </div>
   );
